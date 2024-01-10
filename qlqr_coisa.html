@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <style>
+        #cart {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            max-width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="toggleCart()">Abrir Carrinho</button>
+
+<div id="overlay"></div>
+
+<div id="cart">
+    <h2>Seu Carrinho</h2>
+    <ul id="cart-items"></ul>
+    <button onclick="closeCart()">Fechar Carrinho</button>
+</div>
+
+<script>
+    function toggleCart() {
+        var cart = document.getElementById('cart');
+        var overlay = document.getElementById('overlay');
+        cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
+        overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function closeCart() {
+        var cart = document.getElementById('cart');
+        var overlay = document.getElementById('overlay');
+        cart.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    // Adicione esta função ao selecionar um item para adicionar ao carrinho
+    function addItemToCart(item) {
+        var cartItems = document.getElementById('cart-items');
+        var listItem = document.createElement('li');
+        listItem.textContent = item;
+        cartItems.appendChild(listItem);
+    }
+</script>
+
+</body>
+</html>
